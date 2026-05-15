@@ -34,7 +34,7 @@ function ForgotPassword() {
           <img 
             src="/images/logo-image.jpg" 
             alt="Tulika Tours Logo" 
-            style={{ width: "120px", height: "auto", borderRadius: "12px", marginBottom: "15px", border: "2px solid rgba(250, 204, 21, 0.3)" }} 
+            style={{ width: "120px", height: "auto", borderRadius: "12px", marginBottom: "15px", border: "2px solid rgba(34, 197, 94, 0.3)" }} 
           />
           <h1 className="login-title" style={{ color: "var(--text-logo)" }}>Forgot Password</h1>
           <p className="login-subtitle">Enter your email to receive a reset link</p>

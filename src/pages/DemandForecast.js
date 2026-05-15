@@ -87,7 +87,7 @@ function DemandForecast() {
             <thead>
               <tr>
                 <th>Destination</th>
-                <th>Package Price (UGX)</th>
+                <th>Package Price (USD)</th>
                 <th>Popularity Index</th>
                 <th>Predicted Group Size</th>
                 <th>Confidence</th>

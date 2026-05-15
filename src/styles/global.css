@@ -88,3 +88,21 @@ button:disabled {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);
 }
+
+/* =========================================
+   Mobile Utility Helpers
+   ========================================= */
+
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+
+  .show-mobile {
+    display: block !important;
+  }
+
+  .w-full-mobile {
+    width: 100% !important;
+  }
+}
