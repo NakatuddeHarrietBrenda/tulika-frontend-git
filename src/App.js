@@ -10,6 +10,7 @@ import DemandForecast    from "./pages/DemandForecast";
 import ModelEvaluation   from "./pages/ModelEvaluation";
 import Analytics         from "./pages/Analytics";
 import TopDestinations   from "./pages/TopDestinations";
+import ActivityLogs      from "./pages/ActivityLogs";
 import ProtectedRoute from "./Auth/ProtectedRoute";
 import Layout         from "./components/Layout";
 
@@ -18,7 +19,6 @@ function App() {
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
-      <Route path="/reset-password/:token" element={<ResetPassword />} />
 
       <Route path="/dashboard" element={
         <ProtectedRoute><Layout><Dashboard /></Layout></ProtectedRoute>
@@ -43,6 +43,9 @@ function App() {
       } />
       <Route path="/top-destinations" element={
         <ProtectedRoute><Layout><TopDestinations /></Layout></ProtectedRoute>
+      } />
+      <Route path="/activity-logs" element={
+        <ProtectedRoute><Layout><ActivityLogs /></Layout></ProtectedRoute>
       } />
     </Routes>
   );

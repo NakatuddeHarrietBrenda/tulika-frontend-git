@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { 
   FaChartPie, FaUsers, FaLightbulb, FaSmile, FaChartLine, 
   FaShieldAlt, FaChartBar, FaGlobe, FaSignOutAlt, FaCalendarAlt,
-  FaSun, FaMoon, FaBars, FaTimes 
+  FaSun, FaMoon, FaBars, FaTimes, FaHistory 
 } from "react-icons/fa";
 import { useTheme } from "../Context/ThemeContext";
 import "../styles/Dashboard.css";
@@ -91,6 +91,12 @@ function Layout({ children }) {
           </NavLink>
           <NavLink to="/model-evaluation" onClick={closeMobileMenu} className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
             <FaShieldAlt /> Model Audit
+          </NavLink>
+
+          <div className="nav-section">SYSTEM</div>
+          
+          <NavLink to="/activity-logs" onClick={closeMobileMenu} className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+            <FaHistory /> Activity Logs
           </NavLink>
         </nav>
 
