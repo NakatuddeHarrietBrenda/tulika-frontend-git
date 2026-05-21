@@ -89,9 +89,9 @@ button:disabled {
   background: var(--text-muted);
 }
 
-/* =========================================
+/* 
    Mobile Utility Helpers
-   ========================================= */
+    */
 
 @media (max-width: 768px) {
   .hide-mobile {

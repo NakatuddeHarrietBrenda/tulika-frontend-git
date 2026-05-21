@@ -96,7 +96,7 @@ body {
 
 .nav-link:hover {
   background: rgba(255, 255, 255, 0.05);
-  color: white;
+  color: #f59e0b;
 }
 
 .nav-link.active {
