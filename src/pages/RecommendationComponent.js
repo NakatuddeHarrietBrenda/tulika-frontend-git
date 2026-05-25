@@ -80,7 +80,7 @@ function Recommend() {
             onClick={getRecommendations}
             disabled={loading}
           >
-            {loading ? "Searching..." : <><FaSearch /> Find Packages</>}
+            {loading ? "Searching..." : <><FaSearch /> Find Recommendations</>}
           </button>
         </div>
         {error && <p style={{ color: "#ef4444", marginTop: "15px", fontSize: "14px" }}>{error}</p>}

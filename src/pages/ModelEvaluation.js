@@ -142,6 +142,74 @@ function ModelEvaluation() {
         </div>
       </div>
       
+      {/* Visualizations Section */}
+      <div style={{ marginTop: "40px" }}>
+        <h2 className="section-title" style={{ color: "white", marginBottom: "20px", fontSize: "22px", borderBottom: "1px solid rgba(255,255,255,0.1)", paddingBottom: "10px" }}>
+          Model Interpretability & Data Insights
+        </h2>
+        <div className="charts-row" style={{ flexWrap: "wrap", gap: "24px" }}>
+          {/* Segmentation Plot */}
+          <div className="chart-card" style={{ flex: "1 1 450px", display: "flex", flexDirection: "column" }}>
+            <h3 className="chart-title">K-Means Customer Clusters</h3>
+            <div style={{ background: "#0b1329", padding: "10px", borderRadius: "8px", textAlign: "center", marginBottom: "15px" }}>
+              <img 
+                src="/images/segmentation_clusters.png" 
+                alt="K-Means Clusters" 
+                style={{ maxWidth: "100%", height: "auto", borderRadius: "4px" }} 
+              />
+            </div>
+            <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: "1.5" }}>
+              <strong>Description:</strong> Visual distribution of customers segmented into 3 distinct behavioral clusters based on package price and popularity index. Helpful for identifying targeted marketing strategies.
+            </p>
+          </div>
+
+          {/* Demand Forecast Plot */}
+          <div className="chart-card" style={{ flex: "1 1 450px", display: "flex", flexDirection: "column" }}>
+            <h3 className="chart-title">Demand Forecast & Volume</h3>
+            <div style={{ background: "#0b1329", padding: "10px", borderRadius: "8px", textAlign: "center", marginBottom: "15px" }}>
+              <img 
+                src="/images/demand_forecast.png" 
+                alt="Demand Forecast" 
+                style={{ maxWidth: "100%", height: "auto", borderRadius: "4px" }} 
+              />
+            </div>
+            <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: "1.5" }}>
+              <strong>Description:</strong> Monthly visitor volume trend tracking historical tour demand. Used by the Linear Regression model to forecast future demand patterns.
+            </p>
+          </div>
+
+          {/* Sentiment Distribution Plot */}
+          <div className="chart-card" style={{ flex: "1 1 450px", display: "flex", flexDirection: "column" }}>
+            <h3 className="chart-title">Reviews Sentiment Distribution</h3>
+            <div style={{ background: "#0b1329", padding: "10px", borderRadius: "8px", textAlign: "center", marginBottom: "15px" }}>
+              <img 
+                src="/images/sentiment_distribution.png" 
+                alt="Sentiment Distribution" 
+                style={{ maxWidth: "100%", height: "auto", borderRadius: "4px" }} 
+              />
+            </div>
+            <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: "1.5" }}>
+              <strong>Description:</strong> Breakdown of feedback sentiments (Positive, Neutral, Negative) computed from customer review text ratings. Crucial for assessing customer satisfaction.
+            </p>
+          </div>
+
+          {/* Traveler Preferences Plot */}
+          <div className="chart-card" style={{ flex: "1 1 450px", display: "flex", flexDirection: "column" }}>
+            <h3 className="chart-title">Traveler Preference Distribution</h3>
+            <div style={{ background: "#0b1329", padding: "10px", borderRadius: "8px", textAlign: "center", marginBottom: "15px" }}>
+              <img 
+                src="/images/eda_preferences.png" 
+                alt="Traveler Preferences" 
+                style={{ maxWidth: "100%", height: "auto", borderRadius: "4px" }} 
+              />
+            </div>
+            <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: "1.5" }}>
+              <strong>Description:</strong> Exploratory analysis showing the distribution of traveler category preferences. Informs the recommendation engine on which package types are in highest demand.
+            </p>
+          </div>
+        </div>
+      </div>
+      
       <style>{`
         .metrics-list { display: flex; flex-direction: column; gap: 12px; }
         .metric-item { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; }

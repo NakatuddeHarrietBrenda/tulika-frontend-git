@@ -6,8 +6,8 @@ import {
 } from "recharts";
 import "../styles/global.css";
 
-const SEGMENT_COLORS = { 0: "#22c55e", 1: "#d4af37", 2: "#6366f1" };
-const SEGMENT_LABELS = { 0: "Budget Travelers", 1: "Luxury Clients", 2: "Frequent Travelers" };
+const SEGMENT_COLORS = { 0: "#22c55e", 1: "#a855f7", 2: "#facc15" };
+const SEGMENT_LABELS = { 0: "Budget Travelers", 1: "Medium Clients", 2: "Luxury Clients" };
 
 const CustomDot = (props) => {
   const { cx, cy, payload } = props;
@@ -95,7 +95,7 @@ function Segmentation() {
         <div style={{ overflowX: "auto" }}>
           <table className="data-table">
             <thead>
-              <tr><th>Destination</th><th>Price (UGX)</th><th>Popularity</th><th>Segment</th></tr>
+              <tr><th>Destination</th><th>Price (USD)</th><th>Popularity</th><th>Segment</th></tr>
             </thead>
             <tbody>
               {data.slice(0, 20).map((item, i) => (
