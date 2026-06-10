@@ -5,39 +5,49 @@ import toast, { Toaster } from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "../styles/Login.css";
 
-function Login() {
+function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const login = async () => {
-    if (!email || !password) {
-      toast.error("Please enter email and password");
+  const handleRegister = async () => {
+    if (!email || !password || !confirmPassword) {
+      toast.error("Please fill in all fields");
       return;
     }
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+    
     setLoading(true);
     try {
-      const res = await api.post("/login", { email, password });
-      localStorage.setItem("token", res.data.token);
-      toast.success("Welcome back, Admin!");
-      navigate("/dashboard");
-    } catch {
-      toast.error("Invalid credentials.");
+      const res = await api.post("/register", { email, password });
+      toast.success(res.data?.message || "Registration successful! Please log in.");
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
+    } catch (err) {
+      const errorMsg = err.response?.data?.error || "Registration failed. Please try again.";
+      toast.error(errorMsg);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleKey = (e) => { if (e.key === "Enter") login(); };
+  const handleKey = (e) => {
+    if (e.key === "Enter") handleRegister();
+  };
 
   return (
     <div className="login-bg">
       <Toaster position="top-center" />
 
       <div className="login-card">
-        {/* LOGO ANALYSIS: Using the official brand identity found in /images/logo-image.jpg */}
         <div className="login-logo">
           <img
             src="/images/logo-image.jpg"
@@ -45,7 +55,7 @@ function Login() {
             style={{ width: "120px", height: "auto", borderRadius: "12px", marginBottom: "15px", border: "2px solid rgba(34, 197, 94, 0.3)" }}
           />
           <h1 className="login-title" style={{ color: "var(--text-logo)" }}>Tulika Tours</h1>
-          <p className="login-subtitle">Data-Driven Analytical System</p>
+          <p className="login-subtitle">Create a Data-Driven Account</p>
         </div>
 
         {/* Form */}
@@ -54,7 +64,7 @@ function Login() {
             <label>Email Address</label>
             <input
               type="email"
-              // placeholder="tulikatours@gmail.com"
+              placeholder="name@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               onKeyDown={handleKey}
@@ -71,7 +81,7 @@ function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 onKeyDown={handleKey}
-                autoComplete="current-password"
+                autoComplete="new-password"
               />
               <span
                 className="password-toggle-icon"
@@ -83,34 +93,43 @@ function Login() {
             </div>
           </div>
 
-          <button
-            className={`login-btn ${loading ? "loading" : ""}`}
-            onClick={login}
-            disabled={loading}
-          >
-            {loading ? "Signing in..." : "Sign In"}
-          </button>
-
-          <p className="login-hint">
-            Enter login password <strong> </strong>
-          </p>
-
-          <div style={{ textAlign: 'center', marginTop: '15px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <span
-              onClick={() => navigate("/forgot-password")}
-              style={{ color: 'var(--primary)', cursor: 'pointer', fontSize: '14px', fontWeight: '600' }}
-            >
-              Forgot Password?
-            </span>
-            <span
-              onClick={() => navigate("/register")}
-              style={{ color: 'var(--primary)', cursor: 'pointer', fontSize: '14px', fontWeight: '600' }}
-            >
-              Don't have an account? Register
-            </span>
+          <div className="input-group">
+            <label>Confirm Password</label>
+            <div className="password-input-wrapper">
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                placeholder="••••••••"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                onKeyDown={handleKey}
+                autoComplete="new-password"
+              />
+              <span
+                className="password-toggle-icon"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                title={showConfirmPassword ? "Hide password" : "Show password"}
+              >
+                {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
           </div>
 
+          <button
+            className={`login-btn ${loading ? "loading" : ""}`}
+            onClick={handleRegister}
+            disabled={loading}
+          >
+            {loading ? "Creating Account..." : "Register"}
+          </button>
 
+          <div style={{ textAlign: "center", marginTop: "15px" }}>
+            <span
+              onClick={() => navigate("/")}
+              style={{ color: "var(--primary)", cursor: "pointer", fontSize: "14px", fontWeight: "600" }}
+            >
+              Already have an account? Sign In
+            </span>
+          </div>
         </div>
 
         <p className="login-footer">
@@ -121,4 +140,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
