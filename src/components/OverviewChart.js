@@ -5,7 +5,7 @@ function OverviewChart() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/overview")
+    fetch("https://nyumbaniconstruct.com/api.tulikatoursandtravels.com/overview")
       .then(res => res.json())
       .then(res => {
         setData([
