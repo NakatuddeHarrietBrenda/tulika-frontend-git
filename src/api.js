@@ -1,4 +1,7 @@
-const BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:5000";
+const BASE_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://127.0.0.1:5000"
+    : "https://nyumbaniconstruct.com/api.tulikatoursandtravels.com";
 
 export const apiFetch = (url, options = {}) => {
   const token = localStorage.getItem("token");
@@ -7,8 +10,8 @@ export const apiFetch = (url, options = {}) => {
     ...options,
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-      ...options.headers
-    }
+      Authorization: token ? `Bearer ${token}` : "",
+      ...options.headers,
+    },
   });
 };

@@ -7,9 +7,9 @@ import { ThemeProvider } from "./Context/ThemeContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-   <ThemeProvider>
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <ThemeProvider>
+    <BrowserRouter basename="/tulika">
+      <App />
+    </BrowserRouter>
   </ThemeProvider>
 );
